@@ -2,3 +2,4 @@ alpaca-py
 yfinance
 numpy
 pandas
+dotenv
