@@ -70,7 +70,6 @@ def run_trade(price_data: dict[str, pd.Series]):
         api_key=KEY,
         secret_key=SECRET,
         strategy=best,
-        discord_client=config.DISCORD,
         paper=True,
     )
     bot.run(symbols=SYMBOLS)
