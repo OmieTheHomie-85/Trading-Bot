@@ -23,7 +23,7 @@ from optimizer import Optimizer
 
 from config import *
 
-SYMBOLS = ["SPY", "QQQ", "VTI", "IWM", "EFA", "EEM", "TLT", "GLD"]
+SYMBOLS = symbols
 
 
 def load_data(symbols: list[str], period: str = "5y") -> dict[str, pd.Series]:
@@ -61,7 +61,6 @@ def run_optimize(price_data: dict[str, pd.Series]):
 
 def run_trade(price_data: dict[str, pd.Series]):
     """Optimize, pick best strategy, start live paper trading."""
-    import os
     from alpaca_bot import AlpacaBot
 
     opt = Optimizer(price_data, train_frac=0.7)
@@ -71,6 +70,7 @@ def run_trade(price_data: dict[str, pd.Series]):
         api_key=KEY,
         secret_key=SECRET,
         strategy=best,
+        discord_client=config.DISCORD,
         paper=True,
     )
     bot.run(symbols=SYMBOLS)
