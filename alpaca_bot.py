@@ -11,10 +11,12 @@ from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 
+import config
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-SYMBOLS = ["SPY", "QQQ", "VTI", "IWN", "EFA", "EEM", "TLT", "GLD"]
+SYMBOLS =config.symbols
 
 
 class Discord:
